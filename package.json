@@ -1,14 +1,14 @@
 {
-  "name": "long-enough",
+  "name": "enough-time-ago",
   "version": "1.0.0",
-  "description": "long-enough",
+  "description": "enough-time-ago",
   "keywords": [
     "node"
   ],
   "homepage": "https://ganev.ru",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ganevru/long-enough.git"
+    "url": "git+https://github.com/Ganevru/enough-time-ago.git"
   },
   "license": "MIT",
   "author": "Ivan Ganev <iganevru@gmail.com>",

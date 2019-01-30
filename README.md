@@ -1,6 +1,8 @@
-# Long Enough
+# Enough Time Ago
 
-This is the node library for working with file date.
+File enough time ago modified/created/changed/accessed or not?
+
+A simple library for checking the "age" of a file or/and how long it has changed. This library uses standard [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
 
 ```{}
 npm i long-enough
@@ -9,18 +11,28 @@ npm i long-enough
 Examples with modified (created, changed and accessed - same):
 
 ```{js}
-const longEnough = require('long-enough')
+const enoughTimeAgo = require('enough-time-ago')
 
-longEnough.modified('./newFile.html')
-// return false, if file newFile.html modified <= 86400000 ms
-// by default the millisecond values are 86400000 (one day)
+enoughTimeAgo.modified('./newFile')
+// return false, if file newFile modified less (or exactly 86400000 ms) than one day ago
+// by default millisecond values are 86400000 ms (one day)
 
-longEnough.modified('./newFile.html', 10000)
-// return false, if file newFile.html modified  <= 10000 ms
+enoughTimeAgo.modified('./newFile', 10000)
+// return false, if file newFile modified less (or exactly 10000 ms) than 10 seconds ago
 
-longEnough.modified('./oldFile.html', 10000)
-// return true, if file oldFile.html modified > 10000 ms
+enoughTimeAgo.modified('./oldFile', 10000)
+// return true, if file oldFile modified more than 10 seconds ago
 
-longEnough.modified('./nonFile.html', 10000)
+enoughTimeAgo.modified('./nonFile', 10000)
 // return undefined, if such file does not exist
+```
+
+Delete file if it was last modified more than a day ago.
+
+```{js}
+const enoughTimeAgo = require('enough-time-ago')
+
+enoughTimeAgo.modified('./file.html', 10000, true)
+// delite './file.html' if this file exist and modified more than 10 seconds ago
+
 ```
