@@ -1,36 +1,26 @@
-# Too Old File
+# Is Too Old
 
-This is the node library for working with obsolete files. The basic idea is that to detect the age of files, you need to specify the file age in milliseconds (and NOT how many milliseconds since January 1, 1970).
+This is the node library for working with file date.
 
-Examples:
+```{}
+npm i is-too-old
+```
+
+Examples with modified (created, changed and accessed - same):
 
 ```{js}
-const tooOld = require('too-old')
+const isTooOld = require('is-too-old')
 
-tooOld.is('./newFile.html', 10000)
-// return false
-
-tooOld.is('./oldFile.html', 10000)
-// return true
-
-tooOld.is('./nonExFile.html', 10000)
-// return undefined, if such file does not exist
-
-tooOld.is('./newFile.html')
-// return true
+isTooOld.modified('./newFile.html')
+// return false, if file newFile.html modified <= 86400000 ms
 // by default the millisecond values are 86400000 (one day)
-```
 
-```{js}
-const tooOld = require('too-old')
+isTooOld.modified('./newFile.html', 10000)
+// return false, if file newFile.html modified  <= 10000 ms
 
-tooOld.del('./oldFile.html', 10000)
-// delete the specified file if it is old enough
-```
+isTooOld.modified('./oldFile.html', 10000)
+// return true, if file oldFile.html modified > 10000 ms
 
-```{js}
-const tooOld = require('too-old')
-
-tooOld.delAll('./folder', 10000)
-// delete ALL old files in the folder
+isTooOld.modified('./nonFile.html', 10000)
+// return undefined, if such file does not exist
 ```
