@@ -1,14 +1,14 @@
 {
-  "name": "is-too-old",
+  "name": "long-enough",
   "version": "1.0.0",
-  "description": "is-too-old",
+  "description": "long-enough",
   "keywords": [
     "node"
   ],
   "homepage": "https://ganev.ru",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ganevru/too-old.git"
+    "url": "git+https://github.com/Ganevru/long-enough.git"
   },
   "license": "MIT",
   "author": "Ivan Ganev <iganevru@gmail.com>",
