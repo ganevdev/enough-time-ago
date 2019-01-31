@@ -63,7 +63,7 @@ function changed(
 }
 
 // accessed
-  function accessed(
+function accessed(
   file: string,
   time: number = timeDefault,
   del?: boolean

@@ -16,8 +16,8 @@
   "scripts": {
     "tsc": "tsc",
     "jest": "jest",
-    "lint": "eslint --fix src/**/*.ts",
-    "pretty": "prettier --write src/**/*.{ts,tsx,js,jsx,json}",
+    "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
+    "pretty": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
     "test": "npm run pretty && npm run lint && npm run jest"
   },
   "dependencies": {
@@ -45,12 +45,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run jest"
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
-      "npm test",
+    "src/**/*.ts": [
+      "npm run pretty",
+      "npm run lint",
       "git add"
     ]
   }
