@@ -1,8 +1,8 @@
 # Enough Time Ago
 
-File enough time ago modified/created/changed/accessed or not?
+A simple library for checking how much time has passed since the file was modified, changed, created or accessed. Always returns true, false or undefined (if file does not exist).
 
-A simple library for checking the "age" of a file or/and how long it has changed. This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
+This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
 
 ```{}
 npm i long-enough
