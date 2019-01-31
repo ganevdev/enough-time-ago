@@ -17,8 +17,7 @@
     "tsc": "tsc",
     "jest": "jest",
     "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
-    "pretty": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
-    "test": "npm run pretty && npm run lint && npm run jest"
+    "pretty": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
   },
   "dependencies": {
     "@types/node": "^10.12.19",
@@ -49,7 +48,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.ts": [
+    "src/**/*.{ts,tsx,js,jsx}": [
       "npm run pretty",
       "npm run lint",
       "git add"
