@@ -39,8 +39,9 @@ test('Enough time ago - false', () => {
 
 test('Enough time ago - true', () => {
   writeFile(path.resolve(__dirname, 'fileTrue.html'), 'test');
-  expect(enoughTimeAgo.modified(path.resolve(__dirname, 'fileTrue.html'), 0))
-    .toBeTruthy;
+  expect(
+    enoughTimeAgo.modified(path.resolve(__dirname, 'fileTrue.html'), 10000)
+  ).toBeTruthy;
   expect(enoughTimeAgo.created(path.resolve(__dirname, 'fileTrue.html'), 0))
     .toBeTruthy;
   expect(enoughTimeAgo.changed(path.resolve(__dirname, 'fileTrue.html'), 0))

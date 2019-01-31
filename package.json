@@ -16,10 +16,9 @@
   "scripts": {
     "tsc": "tsc",
     "jest": "jest",
-    "lint": "lint-fix lint-quiet",
-    "lint-fix": "eslint '*.js' --fix",
-    "lint-quiet": "eslint '*.js' --quiet",
-    "test": "npm run -s lint jest"
+    "lint": "eslint --fix src/**/*.ts",
+    "pretty": "prettier --write src/**/*.{ts,tsx,js,jsx,json}",
+    "test": "npm run pretty && npm run lint && npm run jest"
   },
   "dependencies": {
     "@types/node": "^10.12.19",
@@ -50,12 +49,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "src/**/*.{js,jsx}": [
-      "eslint --fix",
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "npm test",
       "git add"
     ]
   }
