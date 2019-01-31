@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-
 import enoughTimeAgo from '../index';
 
 function writeFile(file: string, value: string): void {
@@ -49,68 +48,4 @@ test('Enough time ago - true', () => {
   expect(enoughTimeAgo.accessed(path.resolve(__dirname, 'fileTrue.html'), 0))
     .toBeTruthy;
   delFile(path.resolve(__dirname, 'fileTrue.html'));
-});
-
-test('if enough time ago - true and del - delite file', () => {
-  writeFile(path.resolve(__dirname, 'fileTrueDel.html'), 'test');
-  expect(
-    enoughTimeAgo.modified(path.resolve(__dirname, 'fileTrueDel.html'), 0, true)
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileTrueDel.html'))).toBeFalsy;
-  writeFile(path.resolve(__dirname, 'fileTrueDel.html'), 'test');
-  expect(
-    enoughTimeAgo.created(path.resolve(__dirname, 'fileTrueDel.html'), 0, true)
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileTrueDel.html'))).toBeFalsy;
-  writeFile(path.resolve(__dirname, 'fileTrueDel.html'), 'test');
-  expect(
-    enoughTimeAgo.changed(path.resolve(__dirname, 'fileTrueDel.html'), 0, true)
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileTrueDel.html'))).toBeFalsy;
-  writeFile(path.resolve(__dirname, 'fileTrueDel.html'), 'test');
-  expect(
-    enoughTimeAgo.accessed(path.resolve(__dirname, 'fileTrueDel.html'), 0, true)
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileTrueDel.html'))).toBeFalsy;
-});
-
-test('if enough time ago - false and del true - dont delete files', () => {
-  writeFile(path.resolve(__dirname, 'fileFalseDel.html'), 'test');
-  expect(
-    enoughTimeAgo.modified(
-      path.resolve(__dirname, 'fileFalseDel.html'),
-      10000,
-      true
-    )
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileFalseDel.html')))
-    .toBeTruthy;
-  expect(
-    enoughTimeAgo.created(
-      path.resolve(__dirname, 'fileFalseDel.html'),
-      10000,
-      true
-    )
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileFalseDel.html')))
-    .toBeTruthy;
-  expect(
-    enoughTimeAgo.changed(
-      path.resolve(__dirname, 'fileFalseDel.html'),
-      10000,
-      true
-    )
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileFalseDel.html')))
-    .toBeTruthy;
-  expect(
-    enoughTimeAgo.accessed(
-      path.resolve(__dirname, 'fileFalseDel.html'),
-      10000,
-      true
-    )
-  ).toBeTruthy;
-  expect(fs.existsSync(path.resolve(__dirname, 'fileFalseDel.html')))
-    .toBeTruthy;
-  delFile(path.resolve(__dirname, 'fileFalseDel.html'));
 });
