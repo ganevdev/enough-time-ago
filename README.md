@@ -2,7 +2,7 @@
 
 File enough time ago modified/created/changed/accessed or not?
 
-A simple library for checking the "age" of a file or/and how long it has changed. This library uses standard [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
+A simple library for checking the "age" of a file or/and how long it has changed. This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
 
 ```{}
 npm i long-enough
@@ -32,10 +32,12 @@ Same with created, changed and accessed.
 
 ```{js}
 const enoughTimeAgo = require('enough-time-ago')
+const fs = require('fs');
 
-enoughTimeAgo.modified('./file.html', 10000, true)
-// delite './file.html' if this file exist and modified more than 10 seconds ago
-
+if (enoughTimeAgo.modified('./file.html', 10000)) {
+  fs.unlinkSync('./file.html');
+}
+// delite './file.html' if this file modified more than 10 seconds ago
 ```
 
 Example - how to delete all obsolete (older than one day - 86400000 ms) files in a folder:
@@ -44,8 +46,11 @@ Example - how to delete all obsolete (older than one day - 86400000 ms) files in
 const fs = require('fs')
 const enoughTimeAgo = require('enough-time-ago')
 
-const folder = 'folder/';
+const folder = 'somefolder';
 fs.readdirSync(folder).forEach((file) => {
-  enoughTimeAgo.created(folder + '/' + file, 86400000, true);
+  if (enoughTimeAgo.created(folder + '/' + file, 86400000)) {
+    fs.unlinkSync(folder + '/' + file);
+  }
 });
+// delite all older than 86400000 ms files in a folder
 ```
