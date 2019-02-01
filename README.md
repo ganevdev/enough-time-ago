@@ -1,6 +1,6 @@
 # Enough Time Ago
 
-A simple library for checking how much time has passed since the file was modified, changed, created or accessed. Always returns true, false or undefined (if file does not exist).
+A Node.js library for checking how much time has passed since the file was modified, changed, created or accessed. Always returns true, false or undefined (if file does not exist).
 
 This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
 
