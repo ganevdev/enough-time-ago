@@ -5,7 +5,7 @@ A simple library for checking how much time has passed since the file was modifi
 This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its purpose is to shorten the code.
 
 ```{}
-npm i long-enough
+npm i enough-time-ago
 ```
 
 Examples with modified, same with created, changed and accessed.
