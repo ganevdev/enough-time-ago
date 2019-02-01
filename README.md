@@ -8,7 +8,7 @@ This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its pur
 npm i enough-time-ago
 ```
 
-Examples with modified, same with created, changed and accessed.
+Examples with modified, same with created, changed or accessed.
 
 ```{js}
 const enoughTimeAgo = require('enough-time-ago')
