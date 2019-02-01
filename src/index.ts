@@ -15,6 +15,8 @@ function created(
     } else {
       return false;
     }
+  } else {
+    return undefined;
   }
 }
 
@@ -31,6 +33,8 @@ function modified(
     } else {
       return false;
     }
+  } else {
+    return undefined;
   }
 }
 
@@ -47,6 +51,8 @@ function changed(
     } else {
       return false;
     }
+  } else {
+    return undefined;
   }
 }
 
@@ -63,8 +69,18 @@ function accessed(
     } else {
       return false;
     }
+  } else {
+    return undefined;
   }
 }
 
 // export all
-export default { created, modified, changed, accessed };
+const enoughTimeAgo = {
+  created,
+  modified,
+  changed,
+  accessed
+};
+
+// export default enoughTimeAgo;
+module.exports = enoughTimeAgo;

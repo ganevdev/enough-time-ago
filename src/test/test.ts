@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import enoughTimeAgo from '../index';
+const enoughTimeAgo = require('../index');
 
 function writeFile(file: string, value: string): void {
   if (!fs.existsSync(file)) {
