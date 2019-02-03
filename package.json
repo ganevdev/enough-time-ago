@@ -27,7 +27,7 @@
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.19",
     "ts-node": "^8.0.2",
-    "typescript": "3.2.1"
+    "typescript": "^3.2.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.3.1",
