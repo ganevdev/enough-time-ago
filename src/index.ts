@@ -40,3 +40,4 @@ function enoughTimeAgo(
 }
 
 module.exports = enoughTimeAgo;
+export default enoughTimeAgo;

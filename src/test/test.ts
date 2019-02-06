@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-const enoughTimeAgo = require('../index');
+import enoughTimeAgo from '../index';
+// const enoughTimeAgo = require('../index');
 const timeHasPassed = require('../index');
 
 function writeFile(file: string, value: string): void {
