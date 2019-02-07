@@ -15,16 +15,6 @@ function delFile(file: string): void {
   }
 }
 
-beforeEach(() => {
-  writeFile(path.resolve(__dirname, 'testFileOld'));
-  writeFile(path.resolve(__dirname, 'testFileNew'));
-});
-
-afterEach(() => {
-  // delFile(path.resolve(__dirname, 'testFileOld'));
-  delFile(path.resolve(__dirname, 'testFileNew'));
-});
-
 test('Nonexistent file - return undefined', () => {
   expect(enoughTimeAgo('./nonFile')).toBeUndefined();
   expect(enoughTimeAgo('./nonFile', 'modified', 10000)).toBeUndefined();
@@ -33,20 +23,30 @@ test('Nonexistent file - return undefined', () => {
   expect(enoughTimeAgo('./nonFile', 'accessed', 10000)).toBeUndefined();
 });
 
-test('Enough time ago - false', () => {
-  const file = 'testFileNew';
-  expect(enoughTimeAgo(path.resolve(__dirname, file), 'modified', 10000)).toBe(
-    false
-  );
-  expect(enoughTimeAgo(path.resolve(__dirname, file), 'created', 10000)).toBe(
-    false
-  );
-  expect(enoughTimeAgo(path.resolve(__dirname, file), 'changed', 10000)).toBe(
-    false
-  );
-  expect(enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 10000)).toBe(
-    false
-  );
+describe('Testing newly created files', () => {
+  beforeEach(() => {
+    writeFile(path.resolve(__dirname, 'testFileNew'));
+  });
+
+  afterEach(() => {
+    delFile(path.resolve(__dirname, 'testFileNew'));
+  });
+
+  test('Enough time ago - false', () => {
+    const file = 'testFileNew';
+    expect(
+      enoughTimeAgo(path.resolve(__dirname, file), 'modified', 100000)
+    ).toBe(false);
+    expect(
+      enoughTimeAgo(path.resolve(__dirname, file), 'created', 100000)
+    ).toBe(false);
+    expect(
+      enoughTimeAgo(path.resolve(__dirname, file), 'changed', 100000)
+    ).toBe(false);
+    expect(
+      enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 100000)
+    ).toBe(false);
+  });
 });
 
 test('Enough time ago - true', () => {
