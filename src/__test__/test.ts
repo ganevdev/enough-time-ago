@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import enoughTimeAgo from '../index';
-// const enoughTimeAgo = require('../index');
+const timeHasPassed = require('../index').__get__('timeHasPassed');
 
 function writeFile(file: string, value: string = 'test'): void {
   if (!fs.existsSync(file)) {
@@ -13,6 +13,14 @@ function delFile(file: string): void {
     fs.unlinkSync(file);
   }
 }
+
+test('timeHasPassed', () => {
+  const file = 'testFileOld';
+  const POSIX = new Date().getTime();
+  expect(
+    timeHasPassed(path.resolve(__dirname, file), POSIX, 'modified')
+  ).toBeGreaterThanOrEqual(10000);
+});
 
 test('Nonexistent file - return undefined', () => {
   expect(enoughTimeAgo('./nonFile')).toBeUndefined();
