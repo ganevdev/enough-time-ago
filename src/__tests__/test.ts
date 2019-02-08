@@ -19,15 +19,15 @@ test('timeHasPassed', () => {
   const POSIX = new Date().getTime();
   expect(
     timeHasPassed(path.resolve(__dirname, file), POSIX, 'modified')
-  ).toBeGreaterThanOrEqual(10000);
+  ).toBeGreaterThanOrEqual(100);
 });
 
 test('Nonexistent file - return undefined', () => {
   expect(enoughTimeAgo('./nonFile')).toBeUndefined();
-  expect(enoughTimeAgo('./nonFile', 'modified', 10000)).toBeUndefined();
-  expect(enoughTimeAgo('./nonFile', 'created', 10000)).toBeUndefined();
-  expect(enoughTimeAgo('./nonFile', 'changed', 10000)).toBeUndefined();
-  expect(enoughTimeAgo('./nonFile', 'accessed', 10000)).toBeUndefined();
+  expect(enoughTimeAgo('./nonFile', 'modified', 100)).toBeUndefined();
+  expect(enoughTimeAgo('./nonFile', 'created', 100)).toBeUndefined();
+  expect(enoughTimeAgo('./nonFile', 'changed', 100)).toBeUndefined();
+  expect(enoughTimeAgo('./nonFile', 'accessed', 100)).toBeUndefined();
 });
 
 describe('Testing newly created files', () => {
@@ -41,18 +41,18 @@ describe('Testing newly created files', () => {
 
   test('Enough time ago - false', () => {
     const file = 'testFileNew';
-    expect(
-      enoughTimeAgo(path.resolve(__dirname, file), 'modified', 100000)
-    ).toBe(false);
-    expect(
-      enoughTimeAgo(path.resolve(__dirname, file), 'created', 100000)
-    ).toBe(false);
-    expect(
-      enoughTimeAgo(path.resolve(__dirname, file), 'changed', 100000)
-    ).toBe(false);
-    expect(
-      enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 100000)
-    ).toBe(false);
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'modified', 100)).toBe(
+      false
+    );
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'created', 100)).toBe(
+      false
+    );
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'changed', 100)).toBe(
+      false
+    );
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 100)).toBe(
+      false
+    );
   });
 });
 
