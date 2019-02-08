@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import enoughTimeAgo from '../index';
 // const enoughTimeAgo = require('../index');
-const timeHasPassed = require('../index');
 
 function writeFile(file: string, value: string = 'test'): void {
   if (!fs.existsSync(file)) {
@@ -59,12 +58,4 @@ test('Enough time ago - true', () => {
   expect(enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 0)).toBe(
     true
   );
-});
-
-test('timeHasPassed fun', () => {
-  const file = 'testFileOld';
-  const POSIX = new Date().getTime();
-  expect(
-    timeHasPassed(path.resolve(__dirname, file), POSIX, 'modified')
-  ).toBeDefined();
 });
