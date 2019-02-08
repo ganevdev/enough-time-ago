@@ -41,16 +41,16 @@ describe('Testing newly created files', () => {
 
   test('Enough time ago - false', () => {
     const file = 'testFileNew';
-    expect(enoughTimeAgo(path.resolve(__dirname, file), 'modified', 100)).toBe(
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'modified', 1000)).toBe(
       false
     );
-    expect(enoughTimeAgo(path.resolve(__dirname, file), 'created', 100)).toBe(
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'created', 1000)).toBe(
       false
     );
-    expect(enoughTimeAgo(path.resolve(__dirname, file), 'changed', 100)).toBe(
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'changed', 1000)).toBe(
       false
     );
-    expect(enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 100)).toBe(
+    expect(enoughTimeAgo(path.resolve(__dirname, file), 'accessed', 1000)).toBe(
       false
     );
   });
