@@ -52,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prebuild && lint-staged && npm run jest && npm run build"
+      "pre-commit": "npm run prebuild && npm run lint && lint-staged && npm run jest && npm run build"
     }
   },
   "lint-staged": {
