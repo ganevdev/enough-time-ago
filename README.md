@@ -71,5 +71,5 @@ function delAllOld(folder, extension, time = 86400000) {
 }
 
 delAllOld(path.resolve(__dirname, ''), 'html', 86400000);
-// This function will delete ALL old files with the extension 'html' in the same folder that contains this script.
+// This function delete ALL old files with the extension 'html' in the same folder that contains this script.
 ```
