@@ -11,7 +11,7 @@ This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its pur
 npm i enough-time-ago
 ```
 
-Examples with modified, same with created, changed or accessed.
+Examples with `modified`, same with `created`, `changed` or `accessed`.
 
 ```js
 const enoughTimeAgo = require('enough-time-ago');
@@ -31,7 +31,7 @@ enoughTimeAgo('./newFile');
 ```
 
 Delete file if it was last modified more than a 10 seconds ago.
-Same with created, changed and accessed.
+Same with `created`, `changed` and `accessed`.
 
 ```js
 const enoughTimeAgo = require('enough-time-ago');
