@@ -45,6 +45,8 @@ if (enoughTimeAgo('./file.html', 'modified', 10000)) {
 
 Example - how to delete all obsolete (older than one day - 86400000 ms) files in a folder:
 
+Remember! This example can even delete the file that launched it.
+
 ```js
 const fs = require('fs');
 const enoughTimeAgo = require('enough-time-ago');
