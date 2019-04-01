@@ -1,6 +1,6 @@
 {
   "name": "enough-time-ago",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "enough-time-ago",
   "keywords": [
     "node"
@@ -18,11 +18,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "npm run clean && npm run lint && npm run jest && npm run build",
+    "prepublishOnly": "npm run clean && npm run lint && npm run test && npm run build",
     "clean": "rimraf dist",
     "watch": "jest --watchAll",
     "build": "tsc",
-    "jest": "jest",
+    "test": "jest",
     "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
     "pretty": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
   },
