@@ -11,7 +11,7 @@ This library uses [node fs](https://nodejs.org/api/fs.html) methods, and its pur
 npm i enough-time-ago
 ```
 
-Examples with modified, same with created, changed or accessed.
+Examples with `modified`, same with `created`, `changed` or `accessed`.
 
 ```js
 const enoughTimeAgo = require('enough-time-ago');
@@ -31,7 +31,7 @@ enoughTimeAgo('./newFile');
 ```
 
 Delete file if it was last modified more than a 10 seconds ago.
-Same with created, changed and accessed.
+Same with `created`, `changed` and `accessed`.
 
 ```js
 const enoughTimeAgo = require('enough-time-ago');
@@ -45,15 +45,31 @@ if (enoughTimeAgo('./file.html', 'modified', 10000)) {
 
 Example - how to delete all obsolete (older than one day - 86400000 ms) files in a folder:
 
+Remember! This example can even delete the file that launched it.
+
 ```js
 const fs = require('fs');
+const path = require('path');
 const enoughTimeAgo = require('enough-time-ago');
 
-const folder = 'someFolder';
-fs.readdirSync(folder).forEach((file) => {
-  if (enoughTimeAgo(folder + '/' + file, 'created', 86400000)) {
-    fs.unlinkSync(folder + '/' + file);
+// This function removes the old file (which has been updated too long ago).
+function delOld(file, time) {
+  if (fs.existsSync(file)) {
+    if (enoughTimeAgo(file, 'modified', time)) {
+      fs.unlinkSync(file);
+    }
   }
-});
-// delete all older than 86400000 ms files in a folder
+}
+
+// This function deletes all old files with the specified extension in the specified folder.
+function delAllOld(folder, extension, time = 86400000) {
+  fs.readdirSync(folder).forEach((file) => {
+    if (file.split('.').pop() === extension) {
+      delOld(folder + '/' + file, time);
+    }
+  });
+}
+
+delAllOld(path.resolve(__dirname, ''), 'html', 86400000);
+// This function delete ALL old files with the extension 'html' in the same folder that contains this script.
 ```
